@@ -11,13 +11,13 @@ public class Window extends JFrame{
 		try {
 			game.serverSocket = new ServerSocket(9999);
 		}catch(IOException e) {
-			System.out.println("Something in turkey I think but a mistke has happened");
+			System.out.println("Something in turkey I think a mistke has happened");
 			System.exit(0);
 		}
 		
 		setTitle(title);
 		pack();
-		setSize(width + getInsets().left + getInsets().right, height + getInsets().top + getInsets().bottom);
+		setSize(width, height);
 		
 		setLocationRelativeTo(null);
 		setResizable(false);

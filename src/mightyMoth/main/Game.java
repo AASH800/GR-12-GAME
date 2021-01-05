@@ -1,6 +1,9 @@
 package mightyMoth.main;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 import java.net.ServerSocket;
 
 public class Game extends Canvas implements Runnable{
@@ -33,7 +36,21 @@ public class Game extends Canvas implements Runnable{
 	}
 
 	public void render() {
-	
+		BufferStrategy bs = this.getBufferStrategy();
+		
+		if (bs ==null) {
+			createBufferStrategy(3);
+			return;
+		}
+		
+		Graphics g = bs.getDrawGraphics();
+		
+		g.setColor(Color.red);
+		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		g.dispose();
+		bs.show();
+			
 	}
 
 	@Override
