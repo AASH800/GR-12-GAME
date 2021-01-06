@@ -52,7 +52,7 @@ public class Animation {
 	
 	public void render(Graphics g) {
 		
-		if(target ==null) {
+		if(target == null) {
 			g.drawImage(images[currentImage], x, y, null);
 		}else {
 			g.drawImage(images[currentImage], x + target.x, y + target.y, null);
@@ -74,7 +74,6 @@ public class Animation {
 				stop();
 			}
 		}
-		
 
 	}
 	

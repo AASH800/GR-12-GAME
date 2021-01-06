@@ -10,6 +10,6 @@ public class ResourceLoader {
 			input = ResourceLoader.class.getResourceAsStream("/" + path);
 		}
 			
-		return input;
+		return input;		
 	}
 }

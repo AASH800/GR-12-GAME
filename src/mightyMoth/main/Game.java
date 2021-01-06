@@ -6,12 +6,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.net.ServerSocket;
 
+import mightyMoth.gameobjects.Moth;
+import mightyMoth.handlers.ObjectHandler;
+
 public class Game extends Canvas implements Runnable{
 	
-	public static final int WIDTH = 432;
-	public static final int HEIGHT = 768;
+	public static final int WIDTH = 436;
+	public static final int HEIGHT = 760;
 	
 	public boolean running;
+	
+	public static Moth moth;
 	
 	Thread thread;
 	ServerSocket serverSocket;
@@ -28,11 +33,11 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void init() {
-		
+		moth = new Moth(50, 50, 50, 50);
 	}
 	
 	public void tick() {
-		
+		ObjectHandler.tick();
 	}
 
 	public void render() {
@@ -45,8 +50,10 @@ public class Game extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.red);
+		g.setColor(Color.WHITE);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		ObjectHandler.render(g);
 		
 		g.dispose();
 		bs.show();
