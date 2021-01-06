@@ -4,19 +4,23 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.net.ServerSocket;
 
-import mightyMoth.gameobjects.Moth;
-import mightyMoth.handlers.ObjectHandler;
+import mightyMoth.gameobjects.*;
+import mightyMoth.handlers.*;
+import mightyMoth.loaders.GraphicsLoader;
 
 public class Game extends Canvas implements Runnable{
 	
-	public static final int WIDTH = 436;
-	public static final int HEIGHT = 760;
+	public static final int WIDTH = 433;
+	public static final int HEIGHT = 790;
 	
 	public boolean running;
 	
 	public static Moth moth;
+	public static Ground ground;
+	public static BufferedImage background;
 	
 	Thread thread;
 	ServerSocket serverSocket;
@@ -33,11 +37,15 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void init() {
-		moth = new Moth(50, 50, 36, 60);
+		addKeyListener(new KeyHandler());
+		background = GraphicsLoader.loadGraphics("background.png");
+		ground = new Ground();
+		moth = new Moth(40, 50, 45, 54);
 	}
 	
 	public void tick() {
 		ObjectHandler.tick();
+		ground.tick();
 	}
 
 	public void render() {
@@ -50,8 +58,8 @@ public class Game extends Canvas implements Runnable{
 		
 		Graphics g = bs.getDrawGraphics();
 		
-		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.drawImage(background, 0, 0, null);
+		ground.render(g);
 		
 		ObjectHandler.render(g);
 		
@@ -91,7 +99,7 @@ public class Game extends Canvas implements Runnable{
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				System.out.println("*FPS: " + frames + " | TICKS: " + updates);
-				updates =0;
+				updates = 0;
 				frames = 0;
 			}
 		}

@@ -11,7 +11,7 @@ public class Window extends JFrame{
 		try {
 			game.serverSocket = new ServerSocket(9999);
 		}catch(IOException e) {
-			System.out.println("Something in turkey I think a mistke has happened");
+			System.out.println("Something in german I think it means theres a mistake");
 			System.exit(0);
 		}
 		
@@ -20,7 +20,7 @@ public class Window extends JFrame{
 		setSize(width, height);
 		
 		setLocationRelativeTo(null);
-		setResizable(false);
+		//setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		setVisible(true);

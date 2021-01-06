@@ -26,7 +26,7 @@ public class Moth extends GameObject{
 			images[i] = GraphicsLoader.loadGraphics("moth" + i + ".png");
 		}
 		
-		animation = new Animation(this, 200, true, images);
+		animation = new Animation(this, 150, true, images);
 		animation.start();
 		
 		ObjectHandler.addObject(this);
@@ -34,12 +34,12 @@ public class Moth extends GameObject{
 
 	@Override
 	public void tick() {
-		/*velY += gravity;
+		velY += gravity;
 		y += velY;
 		
 		if(velY >= maxSpeed) {
 			velY = maxSpeed;
-		}*/
+		}
 		
 		animation.tick();
 	}
