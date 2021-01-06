@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void init() {
-		moth = new Moth(50, 50, 50, 50);
+		moth = new Moth(50, 50, 36, 60);
 	}
 	
 	public void tick() {
