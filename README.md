@@ -9,5 +9,5 @@ Basic Premise / Rules
 - Space bar make character fly upwards
 - Moth can't touch touch the top/bottom/sides of the lamps
 - Green coin changes the direction of the game for 5 obstacles
-- Blue coin revereses the gavity of the game for 5 obstacles. 
+- Blue coin reverses the gavity of the game for 5 obstacles. 
 
