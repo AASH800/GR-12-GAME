@@ -1,7 +1,6 @@
 package mightyMoth.main;
 
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -64,8 +63,7 @@ public class Game extends Canvas implements Runnable{
 		ObjectHandler.render(g);
 		
 		g.dispose();
-		bs.show();
-			
+		bs.show();	
 	}
 
 	@Override
@@ -102,8 +100,6 @@ public class Game extends Canvas implements Runnable{
 				updates = 0;
 				frames = 0;
 			}
-		}
-		
+		}	
 	}
-
 }

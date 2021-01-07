@@ -74,7 +74,6 @@ public class Animation {
 				stop();
 			}
 		}
-
 	}
 	
 	public void start() {

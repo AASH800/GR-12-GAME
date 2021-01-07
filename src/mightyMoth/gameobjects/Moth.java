@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import mightyMoth.loaders.GraphicsLoader;
+import mightyMoth.main.Game;
 import mightyMoth.supers.*;
 import mightyMoth.handlers.*;
 
@@ -41,6 +42,16 @@ public class Moth extends GameObject{
 			velY = maxSpeed;
 		}
 		
+		if(y + height > Game.HEIGHT - 170) {
+			y = Game.HEIGHT - 170 - height;
+			setVelY(0);
+		}
+		
+		if(y < 0) {
+			y = 0;
+			setVelY(0);
+		}
+		
 		animation.tick();
 	}
 
@@ -48,5 +59,4 @@ public class Moth extends GameObject{
 	public void render(Graphics g) {
 		animation.render(g);
 	}
-
 }

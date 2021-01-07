@@ -28,5 +28,4 @@ public class Window extends JFrame{
 		add(game);
 		game.start();
 	}
-
 }

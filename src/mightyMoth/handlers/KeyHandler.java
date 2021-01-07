@@ -17,6 +17,10 @@ public class KeyHandler implements KeyListener{
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
 			Game.moth.setVelY(-7);
 		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_E) {
+			LampHandler.spawnLamp();
+		}
 	}
 
 	@Override
