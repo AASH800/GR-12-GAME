@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable{
 	public static final int HEIGHT = 790;
 	
 	public boolean running;
+	public static boolean paused;
 	
 	public static Moth moth;
 	public static Ground ground;
@@ -43,8 +44,10 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void tick() {
-		ObjectHandler.tick();
-		ground.tick();
+		if (!paused) {
+			ObjectHandler.tick();
+			ground.tick();
+		}
 	}
 
 	public void render() {
@@ -97,6 +100,7 @@ public class Game extends Canvas implements Runnable{
 			if(System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				System.out.println("*FPS: " + frames + " | TICKS: " + updates);
+				LampHandler.tick();
 				updates = 0;
 				frames = 0;
 			}

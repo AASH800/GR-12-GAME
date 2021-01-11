@@ -52,6 +52,18 @@ public class Moth extends GameObject{
 			setVelY(0);
 		}
 		
+		GameObject temp = null;
+		
+		for(int i = 0; i < ObjectHandler.list.size(); i++) {
+			temp = ObjectHandler.list.get(i);
+			
+			if(temp instanceof Lamp) {
+				if (this.getBounds().intersects(temp.getBounds()) ) {
+					Game.paused = true;
+				}
+			}
+		}
+		
 		animation.tick();
 	}
 
