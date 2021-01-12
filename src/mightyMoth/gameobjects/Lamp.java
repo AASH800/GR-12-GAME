@@ -4,7 +4,9 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import mightyMoth.enums.LampType;
+import mightyMoth.handlers.ObjectHandler;
 import mightyMoth.loaders.GraphicsLoader;
+import mightyMoth.main.Game;
 import mightyMoth.supers.GameObject;
 
 public class Lamp extends GameObject {
@@ -31,6 +33,14 @@ public class Lamp extends GameObject {
 	@Override
 	public void tick() {
 		x -= velX;
+		
+		if(x + width < 0) {
+			ObjectHandler.removeObject(this);
+			
+			if(type == LampType.TOP) {
+				Game.score += 1;
+			}
+		}
 	}
 	
 	@Override

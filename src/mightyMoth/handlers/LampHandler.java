@@ -12,7 +12,7 @@ public class LampHandler {
 	
 	public static int groundSize = 168;
 	public static int area = Game.HEIGHT - groundSize;
-	public static int spacing = 120;
+	public static int spacing = 130;
 	public static int minSize = 40;
 	public static int maxSize = area - spacing - minSize;
 	public static int delay = 1;
@@ -41,6 +41,5 @@ public class LampHandler {
 			spawnLamp();
 			now = 0;
 		}
-	}
-			
+	}		
 }

@@ -1,6 +1,8 @@
 package mightyMoth.main;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -9,18 +11,24 @@ import java.net.ServerSocket;
 import mightyMoth.gameobjects.*;
 import mightyMoth.handlers.*;
 import mightyMoth.loaders.GraphicsLoader;
+import mightyMoth.supers.Button;
 
 public class Game extends Canvas implements Runnable{
+	
+	public static int score;
 	
 	public static final int WIDTH = 433;
 	public static final int HEIGHT = 790;
 	
 	public boolean running;
+	
 	public static boolean gameover;
 	
 	public static Moth moth;
 	public static Ground ground;
 	public static BufferedImage background;
+	public static BufferedImage scoreboard;
+	public static Button startButton;
 	
 	Thread thread;
 	ServerSocket serverSocket;
@@ -38,9 +46,12 @@ public class Game extends Canvas implements Runnable{
 	
 	public void init() {
 		addKeyListener(new KeyHandler());
+		addMouseListener(new MouseHandler());
+		scoreboard = GraphicsLoader.loadGraphics("scoreboard.png");
 		background = GraphicsLoader.loadGraphics("background.png");
 		ground = new Ground();
 		moth = new Moth(40, 50, 36, 48);
+		startButton = new Button(140, 540, 134, 88, GraphicsLoader.loadGraphics("startbutton.png"));
 	}
 	
 	public void tick() {
@@ -64,6 +75,20 @@ public class Game extends Canvas implements Runnable{
 		ground.render(g);
 		
 		ObjectHandler.render(g);
+		
+		if(gameover) {
+			g.drawImage(scoreboard, 62, 100, null);
+			Game.startButton.render(g);
+			score = 0;
+		}
+		
+		g.setFont( new Font("Arial", Font.BOLD, 32));
+		g.setColor(Color.WHITE);
+		
+		String s = Integer.toString(score);
+		int textWidth = g.getFontMetrics().stringWidth(s);
+		
+		g.drawString(s, Game.WIDTH / 2 - textWidth / 2,  30);
 		
 		g.dispose();
 		bs.show();	

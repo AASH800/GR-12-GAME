@@ -6,6 +6,7 @@ import mightyMoth.loaders.GraphicsLoader;
 import mightyMoth.main.Game;
 
 public class Ground {
+	
 	private BufferedImage image;
 	private int x1, x2;
 	
