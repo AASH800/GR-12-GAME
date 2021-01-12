@@ -34,7 +34,7 @@ public class Ground {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(image, x1, Game.HEIGHT - 180, null);
-		g.drawImage(image, x2, Game.HEIGHT - 180, null);
+		g.drawImage(image, x1, Game.HEIGHT - 168, null);
+		g.drawImage(image, x2, Game.HEIGHT - 168, null);
 	}
 }

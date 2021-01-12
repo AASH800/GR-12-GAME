@@ -1,6 +1,7 @@
 package mightyMoth.gameobjects;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import mightyMoth.loaders.GraphicsLoader;
@@ -14,6 +15,7 @@ public class Moth extends GameObject{
 	
 	public float gravity;
 	public float maxSpeed;
+	public Rectangle rect;
 	
 	public Moth(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -53,12 +55,13 @@ public class Moth extends GameObject{
 		}
 		
 		GameObject temp = null;
+		rect = new Rectangle(this.x + 40, this.y + 50, this.width - 5, this.height - 3);
 		
 		for(int i = 0; i < ObjectHandler.list.size(); i++) {
 			temp = ObjectHandler.list.get(i);
 			
 			if(temp instanceof Lamp) {
-				if (this.getBounds().intersects(temp.getBounds()) ) {
+				if (rect.getBounds().intersects(temp.getBounds())) {
 					Game.gameover = true;
 				}
 			}

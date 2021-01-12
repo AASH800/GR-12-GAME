@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable{
 		addKeyListener(new KeyHandler());
 		background = GraphicsLoader.loadGraphics("background.png");
 		ground = new Ground();
-		moth = new Moth(40, 50, 45, 54);
+		moth = new Moth(40, 50, 36, 48);
 	}
 	
 	public void tick() {
