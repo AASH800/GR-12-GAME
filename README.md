@@ -4,7 +4,6 @@ This is my grade 12 game for ICS4U
 MIGHTY MOTH
 
 Basic Premise / Rules
-- Moth doesn't fall on the ground 
 - Moth makes it past obstacles without hitting them
 - Space bar make character fly upwards
 - Moth can't touch touch the top/bottom/sides of the lamps
