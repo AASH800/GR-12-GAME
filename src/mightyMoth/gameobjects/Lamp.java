@@ -36,11 +36,11 @@ public class Lamp extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		if(type == LampType.BOTTOM) {
-			g.drawImage(lamp, x, y, 83, height, null);
-			g.drawImage(lampBlock, x, y - 5, null);
+			g.drawImage(lamp, x, y, 78, height, null);
+			g.drawImage(lampBlock, x-3, y - 5, null);
 		} else if(type == LampType.TOP) {
-			g.drawImage(lamp, x, y, 83, height, null);
-			g.drawImage(lampBlock, x, y + height - 45, null);
+			g.drawImage(lamp, x, y, 75, height, null);
+			g.drawImage(lampBlock, x-3, y + height - 45, null);
 		}
 	}
 }

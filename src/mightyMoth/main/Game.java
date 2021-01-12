@@ -16,7 +16,7 @@ public class Game extends Canvas implements Runnable{
 	public static final int HEIGHT = 790;
 	
 	public boolean running;
-	public static boolean paused;
+	public static boolean gameover;
 	
 	public static Moth moth;
 	public static Ground ground;
@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void tick() {
-		if (!paused) {
+		if (!gameover) {
 			ObjectHandler.tick();
 			ground.tick();
 		}
@@ -53,7 +53,7 @@ public class Game extends Canvas implements Runnable{
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
 		
-		if (bs ==null) {
+		if (bs == null) {
 			createBufferStrategy(3);
 			return;
 		}

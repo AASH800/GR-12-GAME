@@ -59,7 +59,7 @@ public class Moth extends GameObject{
 			
 			if(temp instanceof Lamp) {
 				if (this.getBounds().intersects(temp.getBounds()) ) {
-					Game.paused = true;
+					Game.gameover = true;
 				}
 			}
 		}
