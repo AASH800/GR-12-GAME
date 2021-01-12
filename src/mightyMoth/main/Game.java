@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable{
 			g.drawImage(scoreboard, 62, 100, null);
 			Game.startButton.render(g);
 			score = 0;
-		}
+		} yolo
 		
 		g.setFont( new Font("Arial", Font.BOLD, 32));
 		g.setColor(Color.WHITE);
