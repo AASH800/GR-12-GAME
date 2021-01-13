@@ -17,7 +17,7 @@ public class Game extends Canvas implements Runnable{
 	
 	public static int score;
 	
-	public static final int WIDTH = 433;
+	public static final int WIDTH = 432;
 	public static final int HEIGHT = 790;
 	
 	public boolean running;
@@ -78,18 +78,20 @@ public class Game extends Canvas implements Runnable{
 		
 		if(gameover) {
 			g.drawImage(scoreboard, 62, 100, null);
+			ScoreHandler.render(g);
 			Game.startButton.render(g);
-			score = 0;
-		} yolo
+		}
 		
-		g.setFont( new Font("Arial", Font.BOLD, 32));
-		g.setColor(Color.WHITE);
-		
-		String s = Integer.toString(score);
-		int textWidth = g.getFontMetrics().stringWidth(s);
-		
-		g.drawString(s, Game.WIDTH / 2 - textWidth / 2,  30);
-		
+		if(!gameover) {
+			g.setFont( new Font("Arial", Font.BOLD, 50));
+			g.setColor(Color.WHITE);
+			
+			String s = Integer.toString(score);
+			int textWidth = g.getFontMetrics().stringWidth(s);
+			
+			g.drawString(s, Game.WIDTH / 2 - textWidth / 2 - 10, 50);
+		}
+				
 		g.dispose();
 		bs.show();	
 	}

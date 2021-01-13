@@ -21,6 +21,7 @@ public class MouseHandler implements MouseListener {
 				ObjectHandler.addObject(Game.moth);
 				Game.gameover = false;
 				Game.startButton.pressed = false;
+				Game.score = 0;
 			}
 		}
 	}

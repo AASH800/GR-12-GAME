@@ -10,7 +10,7 @@ public class LampHandler {
 	
 	private static Random random = new Random();
 	
-	public static int groundSize = 168;
+	public static int groundSize = 180;
 	public static int area = Game.HEIGHT - groundSize;
 	public static int spacing = 130;
 	public static int minSize = 40;

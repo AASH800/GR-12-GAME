@@ -44,8 +44,8 @@ public class Moth extends GameObject{
 			velY = maxSpeed;
 		}
 		
-		if(y + height > Game.HEIGHT - 170) {
-			y = Game.HEIGHT - 170 - height;
+		if(y + height > Game.HEIGHT - 190) {
+			y = Game.HEIGHT - 190 - height;
 			setVelY(0);
 		}
 		
