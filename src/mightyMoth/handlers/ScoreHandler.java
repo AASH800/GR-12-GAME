@@ -15,7 +15,7 @@ import mightyMoth.main.Game;
 public class ScoreHandler {
 	
 	public static FileInputStream txt;
-	public static FileWriter high;
+	public static FileWriter highScore;
 	public static Scanner scanner;
 	
 	public static String bestScore() {
@@ -24,19 +24,19 @@ public class ScoreHandler {
             scanner = new Scanner(txt); 
             
             if(scanner.nextInt() < Game.score) {
-            	high = new FileWriter("bestScore.txt");
-            	high.write(Integer.toString(Game.score));
-            	high.close();
+            	highScore = new FileWriter("bestScore.txt");
+            	highScore.write(Integer.toString(Game.score));
+            	highScore.close();
             }
             
-            return usingBufferedReader("bestScore.txt");
+            return fileReader("bestScore.txt");
             
         } catch(Exception e) {System.out.println("umm, check bestScore and change it so all it hold is 0");}
 		
 		return "0";
 	}
 	
-	private static String usingBufferedReader(String filePath) {
+	private static String fileReader(String filePath) {
         StringBuilder contentBuilder = new StringBuilder();
         
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

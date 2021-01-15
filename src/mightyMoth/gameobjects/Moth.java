@@ -11,17 +11,19 @@ import mightyMoth.handlers.*;
 
 public class Moth extends GameObject{
 	
-	Animation animation;
+	private Animation animation;
 	
 	public float gravity;
 	public float maxSpeed;
+	public float n;
 	public Rectangle rect;
 	
 	public Moth(int x, int y, int width, int height) {
 		super(x, y, width, height);
-
-		gravity = 0.3f;
-		maxSpeed = 12f;
+		
+		n = 1;
+		gravity = n * 0.3f;
+		maxSpeed = n * 12f;
 		
 		BufferedImage[] images = new BufferedImage[3];
 		
@@ -40,8 +42,14 @@ public class Moth extends GameObject{
 		velY += gravity;
 		y += velY;
 		
-		if(velY >= maxSpeed) {
-			velY = maxSpeed;
+		if(Game.moth.gravity == -0.3f) {
+			if(velY <= maxSpeed) {
+				velY = maxSpeed;
+			}
+		}else {
+			if(velY >= maxSpeed) {
+				velY = maxSpeed;
+			}
 		}
 		
 		if(y + height > Game.HEIGHT - 190) {
@@ -69,6 +77,7 @@ public class Moth extends GameObject{
 		
 		animation.tick();
 	}
+	
 
 	@Override
 	public void render(Graphics g) {

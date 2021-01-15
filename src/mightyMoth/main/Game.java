@@ -13,37 +13,37 @@ import mightyMoth.handlers.*;
 import mightyMoth.loaders.GraphicsLoader;
 import mightyMoth.supers.Button;
 
-public class Game extends Canvas implements Runnable{
-	
+public class Game extends Canvas implements Runnable {
+
 	public static int score;
-	
+
 	public static final int WIDTH = 432;
 	public static final int HEIGHT = 790;
-	
+
 	public boolean running;
-	
+
 	public static boolean gameover;
-	
+
 	public static Moth moth;
 	public static Ground ground;
 	public static BufferedImage background;
 	public static BufferedImage scoreboard;
 	public static Button startButton;
-	
+
 	Thread thread;
 	ServerSocket serverSocket;
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		new Window(WIDTH, HEIGHT, "MightyMoth", new Game());
 	}
-	
+
 	public synchronized void start() {
 		running = true;
 		thread = new Thread();
 		thread.start();
 		run();
 	}
-	
+
 	public void init() {
 		addKeyListener(new KeyHandler());
 		addMouseListener(new MouseHandler());
@@ -53,7 +53,7 @@ public class Game extends Canvas implements Runnable{
 		moth = new Moth(40, 50, 36, 48);
 		startButton = new Button(140, 540, 134, 88, GraphicsLoader.loadGraphics("startbutton.png"));
 	}
-	
+
 	public void tick() {
 		if (!gameover) {
 			ObjectHandler.tick();
@@ -63,44 +63,44 @@ public class Game extends Canvas implements Runnable{
 
 	public void render() {
 		BufferStrategy bs = this.getBufferStrategy();
-		
+
 		if (bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
-		
+
 		Graphics g = bs.getDrawGraphics();
-		
+
 		g.drawImage(background, 0, 0, null);
 		ground.render(g);
-		
+
 		ObjectHandler.render(g);
-		
-		if(gameover) {
+
+		if (gameover) {
 			g.drawImage(scoreboard, 62, 100, null);
 			ScoreHandler.render(g);
 			Game.startButton.render(g);
 		}
-		
-		if(!gameover) {
-			g.setFont( new Font("Arial", Font.BOLD, 50));
+
+		if (!gameover) {
+			g.setFont(new Font("Arial", Font.BOLD, 50));
 			g.setColor(Color.WHITE);
-			
+
 			String s = Integer.toString(score);
 			int textWidth = g.getFontMetrics().stringWidth(s);
-			
+
 			g.drawString(s, Game.WIDTH / 2 - textWidth / 2 - 10, 50);
 		}
-				
+
 		g.dispose();
-		bs.show();	
+		bs.show();
 	}
 
 	@Override
 	public void run() {
 		init();
 		this.requestFocus();
-		
+
 		long pastTime = System.nanoTime();
 		double amountOfTicks = 60.0;
 		double ns = 1000000000 / amountOfTicks;
@@ -108,29 +108,29 @@ public class Game extends Canvas implements Runnable{
 		long timer = System.currentTimeMillis();
 		int updates = 0;
 		int frames = 0;
-		
-		while(running) {
+
+		while (running) {
 			long now = System.nanoTime();
 			delta += (now - pastTime) / ns;
 			pastTime = now;
-			
-			while(delta > 0) {
+
+			while (delta > 0) {
 				tick();
 				updates++;
-				
+
 				render();
 				frames++;
-				
+
 				delta--;
 			}
-			
-			if(System.currentTimeMillis() - timer > 1000) {
+
+			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
 				System.out.println("*FPS: " + frames + " | TICKS: " + updates);
 				LampHandler.tick();
 				updates = 0;
 				frames = 0;
 			}
-		}	
+		}
 	}
 }

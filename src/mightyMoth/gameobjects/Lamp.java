@@ -12,14 +12,15 @@ import mightyMoth.supers.GameObject;
 public class Lamp extends GameObject {
 	LampType type;
 	
-	BufferedImage lampBlock;
-	BufferedImage lamp;
+	private BufferedImage lampBlock;
+	private BufferedImage lamp;
+	public static int n = 1;
 	
 	public Lamp(int x, int y, int width, int height, LampType type) {
 		super(x, y, width, height);
 		
 		this.type = type;
-		this.velX = 3;
+		this.velX = n * 3;
 		
 		lamp = GraphicsLoader.loadGraphics("lamp.png");
 		

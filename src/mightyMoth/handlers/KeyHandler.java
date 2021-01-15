@@ -15,7 +15,11 @@ public class KeyHandler implements KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_SPACE) {
-			Game.moth.setVelY(-5);
+			if(Game.moth.gravity == -0.3f) {
+				Game.moth.setVelY(5);
+			}else {
+				Game.moth.setVelY(-5);
+			}
 		}
 		
 		if(e.getKeyCode() == KeyEvent.VK_E) {
