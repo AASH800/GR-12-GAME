@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import mightyMoth.loaders.GraphicsLoader;
@@ -69,7 +68,6 @@ public class Moth extends GameObject{
 		}
 		
 		GameObject temp = null;
-		//rect = new Rectangle(this.x + 40, this.y + 50, this.width - 5, this.height - 3);
 		
 		for(int i = 0; i < ObjectHandler.list.size(); i++) {
 			temp = ObjectHandler.list.get(i);
@@ -99,20 +97,13 @@ public class Moth extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		g.drawRect(x, y, width, height);
-		/*GameObject temp = null;
-		rect = new Rectangle(this.x + 40, this.y + 50, this.width - 5, this.height - 3);
-		for(int i = 0; i < ObjectHandler.list.size(); i++) {
-			temp = ObjectHandler.list.get(i);
-			if(temp instanceof BlueCoin) {
-				if (rect.getBounds().intersects(temp.getBounds())) {*/
-				if (blueFive) {
-					g.setFont( new Font("Arial", Font.BOLD, 70));
-					g.setColor(Color.CYAN);
-					g.drawString("+5", Game.WIDTH / 2 + 50,  280);	
-				}
-			//}
-		//}
+		//g.drawRect(x, y, width, height);
+
+		if (blueFive) {
+			g.setFont( new Font("Arial", Font.BOLD, 70));
+			g.setColor(Color.CYAN);
+			g.drawString("+5", Game.WIDTH / 2 + 50,  280);	
+		}
 		
 		animation.render(g);
 	}

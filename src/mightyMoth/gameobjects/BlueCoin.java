@@ -18,8 +18,6 @@ public class BlueCoin extends GameObject{
 	
 	public static int groundSize = 180;
 	public static int area = Game.HEIGHT - groundSize;
-	public static int minSize = 200;
-	public static int maxSize = area - minSize;
 	public static int num;
 	
 	public BlueCoin(int x, int y, int width, int height) {
@@ -33,9 +31,7 @@ public class BlueCoin extends GameObject{
 			images[i] = GraphicsLoader.loadGraphics("blue" + i + ".png");
 		}
 		
-		animation = new Animation(this, 150, true, images);
-		animation.displaceX = -25;
-		animation.displaceY = -25;
+		animation = new Animation(this, 155, true, images);
 		animation.start();
 	}
 
@@ -44,7 +40,7 @@ public class BlueCoin extends GameObject{
 		x -= velX;
 		animation.tick();
 		
-		if(x + width + 350  < 0 && Lamp.n == 1) {
+		if(x + width  < 0 && Lamp.n == 1) {
 			ObjectHandler.removeObject(this);
 			 if(Moth.blueFive) {
 				 Game.score += 5;
@@ -55,17 +51,16 @@ public class BlueCoin extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		g.drawRect(x, y, width, height);
-		//g.fillRect(x, y, width, height);
+		//g.drawRect(x, y, width, height);
 		animation.render(g);
 	}
 	
 	public static void spawnCoin() {
-		num = random.nextInt(350 - 40) + 40;
+		num = random.nextInt(580 - 80) + 80;
 		
-		//if(num%2 == 0) {
-			BlueCoin blueCoin = new BlueCoin(250, num/2, 50, 50);
+		if(num%10 == 0) {
+			BlueCoin blueCoin = new BlueCoin(705, num, 25, 35);
 			ObjectHandler.addObject(blueCoin);
-		//} 
+		} 
 	}
 }

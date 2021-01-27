@@ -8,8 +8,6 @@ public class Animation {
 	private int x;
 	private int y;
 	private int currentImage;
-	public static int displaceX = 0;
-	public static int displaceY = 0;
 	
 	private long delay;
 	private long startTime;
@@ -58,8 +56,10 @@ public class Animation {
 		
 		if(target == null) {
 			g.drawImage(images[currentImage], x, y, null);
+		}else if(delay == 155){
+			g.drawImage(images[currentImage], target.x - 25, target.y - 28, null);
 		}else {
-			g.drawImage(images[currentImage], displaceX + target.x, displaceY + target.y, null);
+			g.drawImage(images[currentImage], target.x, target.y, null);
 		}
 	}
 	
