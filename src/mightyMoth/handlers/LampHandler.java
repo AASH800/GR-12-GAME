@@ -4,7 +4,8 @@ import java.util.Random;
 
 import mightyMoth.enums.LampType;
 import mightyMoth.gameobjects.Lamp;
-import mightyMoth.gameobjects.Coin;
+import mightyMoth.gameobjects.BlueCoin;
+import mightyMoth.gameobjects.GreenCoin;
 import mightyMoth.main.Game;
 
 public class LampHandler {
@@ -30,8 +31,8 @@ public class LampHandler {
 		
 		heightBottom = area - spacing - heightTop;
 		
-		Lamp lampTop = new Lamp(500, 0, 78, heightTop, LampType.TOP);
-		Lamp lampBottom = new Lamp(500, heightTop + spacing, 78, heightBottom, LampType.BOTTOM);
+		Lamp lampTop = new Lamp(Lamp.n * 500, 0, 78, heightTop, LampType.TOP);
+		Lamp lampBottom = new Lamp(Lamp.n * 500, heightTop + spacing, 78, heightBottom, LampType.BOTTOM);
 		
 		ObjectHandler.addObject(lampTop);
 		ObjectHandler.addObject(lampBottom);
@@ -42,7 +43,7 @@ public class LampHandler {
 			now ++;
 		} else {
 			spawnLamp();
-			Coin.spawnCoin();
+			BlueCoin.spawnCoin();
 			now = 0;
 		}
 	}		

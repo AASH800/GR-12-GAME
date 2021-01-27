@@ -8,12 +8,15 @@ public class Animation {
 	private int x;
 	private int y;
 	private int currentImage;
+	public static int displaceX = 0;
+	public static int displaceY = 0;
 	
 	private long delay;
 	private long startTime;
 	
 	private boolean loop;
 	private boolean running;
+	
 	
 	private GameObject target;
 	private BufferedImage[] images;
@@ -56,7 +59,7 @@ public class Animation {
 		if(target == null) {
 			g.drawImage(images[currentImage], x, y, null);
 		}else {
-			g.drawImage(images[currentImage], x + target.x, y + target.y, null);
+			g.drawImage(images[currentImage], displaceX + target.x, displaceY + target.y, null);
 		}
 	}
 	

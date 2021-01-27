@@ -35,7 +35,7 @@ public class Lamp extends GameObject {
 	public void tick() {
 		x -= velX;
 		
-		if(x + width < 0) {
+		if(x + width < 0 && Lamp.n == 1) {
 			ObjectHandler.removeObject(this);
 			
 			if(type == LampType.TOP) {
