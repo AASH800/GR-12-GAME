@@ -7,7 +7,6 @@ import java.util.Random;
 import mightyMoth.handlers.LampHandler;
 import mightyMoth.handlers.ObjectHandler;
 import mightyMoth.loaders.GraphicsLoader;
-import mightyMoth.main.Game;
 import mightyMoth.supers.Animation;
 import mightyMoth.supers.GameObject;
 
@@ -16,8 +15,6 @@ public class GreenCoin extends GameObject{
 	private Animation animation;
 	private static Random random = new Random();
 	
-	public static int groundSize = 180;
-	public static int area = Game.HEIGHT - groundSize;
 	public static int num;
 	public static int meep;
 	
@@ -41,19 +38,16 @@ public class GreenCoin extends GameObject{
 		x -= velX;
 		animation.tick();
 		
-		if(x + width + 25 < 0) {
+		if(x + width < 0) {
 			ObjectHandler.removeObject(this);
-			 
-			if(Moth.greenGrav) {
-				System.out.println("this dumb dumb works too");
-				
-				if (LampHandler.pass <= 5) {
-					Moth.n = -1;
-				}
-				
+			
+			if (Moth.greenGrav) {
+				Moth.n *= -1;
+				GreenCoin greenCoin = new GreenCoin(525 + 500, LampHandler.heightTop + 55, 25, 35);
+				ObjectHandler.addObject(greenCoin); 
 				Moth.greenGrav = false;
-				Moth.n = 1;
 			}
+		
 		}
 	}
 
@@ -64,16 +58,10 @@ public class GreenCoin extends GameObject{
 	}
 	
 	public static void spawnCoin() {
-		num = random.nextInt(580 - 80) + 80;
 		meep = random.nextInt();
 		
-		if(num%10 == 0) {
-			GreenCoin greenCoin = new GreenCoin(705, num, 25, 35);
-			ObjectHandler.addObject(greenCoin);
-		} 
-		
-		if(meep%10 == 0) {
-			GreenCoin greenCoin = new GreenCoin(525, LampHandler.heightTop + 55, 25, 35);
+		if(meep % 10 == 0) {
+			GreenCoin greenCoin = new GreenCoin(525, LampHandler.heightTop + LampHandler.spacing/2, 25, 35);
 			ObjectHandler.addObject(greenCoin);
 		} 
 	}

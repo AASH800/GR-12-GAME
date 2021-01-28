@@ -45,7 +45,7 @@ public class Moth extends GameObject{
 		gravity = n * 0.3f;
 		maxSpeed = n * 12f;
 		
-		if(Game.moth.gravity == -0.3f) {
+		if(Game.moth.gravity < 0) {
 			if(velY <= maxSpeed) {
 				velY = maxSpeed;
 			}
@@ -72,8 +72,8 @@ public class Moth extends GameObject{
 			
 			if(temp instanceof Lamp) {
 				if (this.getBounds().intersects(temp.getBounds())) {
-					Moth.greenGrav = false;
 					n = 1;
+					greenGrav = false;
 					Game.gameover = true;
 				}
 			}
@@ -81,7 +81,6 @@ public class Moth extends GameObject{
 			if(temp instanceof GreenCoin) {
 				if (this.getBounds().intersects(temp.getBounds())) {
 					greenGrav = true;
-					LampHandler.pass = 0;
 				}
 			}
 			
@@ -107,7 +106,6 @@ public class Moth extends GameObject{
 		}
 		
 		if (greenGrav) {
-			n = -1;
 			g.setFont( new Font("Arial", Font.BOLD, 60));
 			g.setColor(Color.YELLOW);
 			int textWidth = g.getFontMetrics().stringWidth("NO GRAVITY");

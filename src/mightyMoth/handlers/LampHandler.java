@@ -4,7 +4,6 @@ import java.util.Random;
 
 import mightyMoth.enums.LampType;
 import mightyMoth.gameobjects.Lamp;
-import mightyMoth.gameobjects.Moth;
 import mightyMoth.gameobjects.BlueCoin;
 import mightyMoth.gameobjects.GreenCoin;
 import mightyMoth.main.Game;
@@ -15,12 +14,11 @@ public class LampHandler {
 	
 	public static int groundSize = 180;
 	public static int area = Game.HEIGHT - groundSize;
-	public static int spacing = 200; //150;
+	public static int spacing = 300; //150;
 	public static int minSize = 40;
 	public static int maxSize = area - spacing - minSize;
 	public static int delay = 1;
 	public static int now;
-	public static int pass;
 	public static int heightTop;
 	public static int heightBottom;
 	
@@ -47,7 +45,6 @@ public class LampHandler {
 			spawnLamp();
 			BlueCoin.spawnCoin();
 			GreenCoin.spawnCoin();
-			pass ++;
 			now = 0;
 		}
 	}		
