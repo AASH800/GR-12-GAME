@@ -14,13 +14,12 @@ public class Lamp extends GameObject {
 	
 	private BufferedImage lampBlock;
 	private BufferedImage lamp;
-	public static int n = 1;
 	
 	public Lamp(int x, int y, int width, int height, LampType type) {
 		super(x, y, width, height);
 		
 		this.type = type;
-		this.velX = n * 3;
+		this.velX = 3;
 		
 		lamp = GraphicsLoader.loadGraphics("lamp.png");
 		
@@ -35,7 +34,7 @@ public class Lamp extends GameObject {
 	public void tick() {
 		x -= velX;
 		
-		if(x + width < 0 && Lamp.n == 1) {
+		if(x + width < 0) {
 			ObjectHandler.removeObject(this);
 			
 			if(type == LampType.TOP) {

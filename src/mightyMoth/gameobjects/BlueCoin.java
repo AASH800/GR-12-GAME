@@ -14,7 +14,6 @@ public class BlueCoin extends GameObject{
 	
 	private Animation animation;
 	private static Random random = new Random();
-	//private BufferedImage blueCoin;
 	
 	public static int groundSize = 180;
 	public static int area = Game.HEIGHT - groundSize;
@@ -40,7 +39,7 @@ public class BlueCoin extends GameObject{
 		x -= velX;
 		animation.tick();
 		
-		if(x + width  < 0 && Lamp.n == 1) {
+		if(x + width  < 0) {
 			ObjectHandler.removeObject(this);
 			 if(Moth.blueFive) {
 				 Game.score += 5;

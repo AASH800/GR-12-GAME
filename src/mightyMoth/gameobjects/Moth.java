@@ -18,17 +18,12 @@ public class Moth extends GameObject{
 	public float gravity;
 	public float maxSpeed;
 	public static float n = 1;
-	public static int w = 0;
 	public static boolean blueFive = false;
+	public static boolean greenGrav = false;
 	public Rectangle rect;
-
-	private Graphics g;
 	
 	public Moth(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		
-		gravity = n * 0.3f;
-		maxSpeed = n * 12f;
 		
 		BufferedImage[] images = new BufferedImage[3];
 		
@@ -46,6 +41,9 @@ public class Moth extends GameObject{
 	public void tick() {
 		velY += gravity;
 		y += velY;
+		
+		gravity = n * 0.3f;
+		maxSpeed = n * 12f;
 		
 		if(Game.moth.gravity == -0.3f) {
 			if(velY <= maxSpeed) {
@@ -74,13 +72,16 @@ public class Moth extends GameObject{
 			
 			if(temp instanceof Lamp) {
 				if (this.getBounds().intersects(temp.getBounds())) {
+					Moth.greenGrav = false;
+					n = 1;
 					Game.gameover = true;
 				}
 			}
 			
 			if(temp instanceof GreenCoin) {
 				if (this.getBounds().intersects(temp.getBounds())) {
-					Senarios.blueGravity();
+					greenGrav = true;
+					LampHandler.pass = 0;
 				}
 			}
 			
@@ -103,6 +104,14 @@ public class Moth extends GameObject{
 			g.setFont( new Font("Arial", Font.BOLD, 70));
 			g.setColor(Color.CYAN);
 			g.drawString("+5", Game.WIDTH / 2 + 50,  280);	
+		}
+		
+		if (greenGrav) {
+			n = -1;
+			g.setFont( new Font("Arial", Font.BOLD, 60));
+			g.setColor(Color.YELLOW);
+			int textWidth = g.getFontMetrics().stringWidth("NO GRAVITY");
+			g.drawString("NO GRAVITY", Game.WIDTH / 2 - textWidth/2,  280);	
 		}
 		
 		animation.render(g);
