@@ -108,8 +108,8 @@ public class Moth extends GameObject{
 		if (greenGrav) {
 			g.setFont( new Font("Arial", Font.BOLD, 60));
 			g.setColor(Color.YELLOW);
-			int textWidth = g.getFontMetrics().stringWidth("NO GRAVITY");
-			g.drawString("NO GRAVITY", Game.WIDTH / 2 - textWidth/2,  280);	
+			int textWidth = g.getFontMetrics().stringWidth("GRAVITY");
+			g.drawString("GRAVITY", Game.WIDTH / 2 - textWidth/2,  280);	
 		}
 		
 		animation.render(g);

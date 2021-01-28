@@ -43,7 +43,7 @@ public class GreenCoin extends GameObject{
 			
 			if (Moth.greenGrav) {
 				Moth.n *= -1;
-				GreenCoin greenCoin = new GreenCoin(525 + 500, LampHandler.heightTop + 55, 25, 35);
+				GreenCoin greenCoin = new GreenCoin(525, LampHandler.heightTop + LampHandler.spacing/2, 25, 35);
 				ObjectHandler.addObject(greenCoin); 
 				Moth.greenGrav = false;
 			}

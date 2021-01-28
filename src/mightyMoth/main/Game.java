@@ -22,13 +22,15 @@ public class Game extends Canvas implements Runnable {
 
 	public boolean running;
 
-	public static boolean gameover;
+	public static boolean gameover = true;
 
 	public static Moth moth;
 	public static Ground ground;
 	public static BufferedImage background;
 	public static BufferedImage scoreboard;
-	public static Button startButton;
+	public static Button easyButton;
+	public static Button mediumButton;
+	public static Button hardButton;
 
 	Thread thread;
 	ServerSocket serverSocket;
@@ -51,7 +53,9 @@ public class Game extends Canvas implements Runnable {
 		background = GraphicsLoader.loadGraphics("background.png");
 		ground = new Ground();
 		moth = new Moth(40, 50, 36, 48);
-		startButton = new Button(140, 540, 134, 88, GraphicsLoader.loadGraphics("startbutton.png"));
+		easyButton = new Button(27, 540, 112, 88, GraphicsLoader.loadGraphics("easy.png"));
+		mediumButton = new Button(152, 540, 112, 88, GraphicsLoader.loadGraphics("meduim.png"));
+		hardButton = new Button(278, 540, 112, 88, GraphicsLoader.loadGraphics("hard.png"));
 	}
 
 	public void tick() {
@@ -79,7 +83,9 @@ public class Game extends Canvas implements Runnable {
 		if (gameover) {
 			g.drawImage(scoreboard, 62, 100, null);
 			ScoreHandler.render(g);
-			Game.startButton.render(g);
+			Game.easyButton.render(g);
+			Game.mediumButton.render(g);
+			Game.hardButton.render(g);
 		}
 
 		if (!gameover) {

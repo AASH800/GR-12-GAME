@@ -14,14 +14,39 @@ public class MouseHandler implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(Button.checkCollision(e.getX(), e.getY(), Game.startButton)) {
+		if(Button.checkCollision(e.getX(), e.getY(), Game.easyButton)) {
 			if(Game.gameover) {
-				Game.startButton.pressed = true;
+				Game.easyButton.pressed = true;
 				ObjectHandler.list.clear();
 				ObjectHandler.addObject(Game.moth);
 				Game.gameover = false;
-				Game.startButton.pressed = false;
+				Game.easyButton.pressed = false;
 				Game.score = 0;
+				LampHandler.spacing = 300;
+			}
+		}
+		
+		if(Button.checkCollision(e.getX(), e.getY(), Game.mediumButton)) {
+			if(Game.gameover) {
+				Game.mediumButton.pressed = true;
+				ObjectHandler.list.clear();
+				ObjectHandler.addObject(Game.moth);
+				Game.gameover = false;
+				Game.mediumButton.pressed = false;
+				Game.score = 0;
+				LampHandler.spacing = 220;
+			}
+		}
+		
+		if(Button.checkCollision(e.getX(), e.getY(), Game.hardButton)) {
+			if(Game.gameover) {
+				Game.hardButton.pressed = true;
+				ObjectHandler.list.clear();
+				ObjectHandler.addObject(Game.moth);
+				Game.gameover = false;
+				Game.hardButton.pressed = false;
+				Game.score = 0;
+				LampHandler.spacing = 150;
 			}
 		}
 	}
