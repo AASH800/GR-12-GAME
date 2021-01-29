@@ -41,16 +41,15 @@ public class BlueCoin extends GameObject{
 		
 		if(x + width  < 0) {
 			ObjectHandler.removeObject(this);
-			 if(Moth.blueFive) {
-				 Game.score += 5;
-				 Moth.blueFive = false;
-			 }
+			if(Moth.blueFive) {
+				Game.score += 5;
+				Moth.blueFive = false;
+			}
 		}
 	}
 
 	@Override
 	public void render(Graphics g) {
-		//g.drawRect(x, y, width, height);
 		animation.render(g);
 	}
 	

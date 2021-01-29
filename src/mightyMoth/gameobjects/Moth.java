@@ -20,7 +20,6 @@ public class Moth extends GameObject{
 	public static float n = 1;
 	public static boolean blueFive = false;
 	public static boolean greenGrav = false;
-	public Rectangle rect;
 	
 	public Moth(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -97,8 +96,6 @@ public class Moth extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		//g.drawRect(x, y, width, height);
-
 		if (blueFive) {
 			g.setFont( new Font("Arial", Font.BOLD, 70));
 			g.setColor(Color.CYAN);
@@ -114,5 +111,4 @@ public class Moth extends GameObject{
 		
 		animation.render(g);
 	}
-	
 }

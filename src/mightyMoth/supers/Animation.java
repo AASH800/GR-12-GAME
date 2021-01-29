@@ -30,28 +30,6 @@ public class Animation {
 		this.images = images;
 	}
 	
-	public Animation(GameObject target,int x, int y, long delay, boolean loop, BufferedImage[] images) {
-		this.x = target.getX() + x;
-		this.y = target.getY() + y;
-		this.currentImage = 0;
-		this.delay = delay;
-		this.startTime = 0;
-		this.loop = loop;
-		this.setTarget(target);
-		this.images = images;
-	}
-	
-	public Animation(int x, int y, long delay, boolean loop, BufferedImage[] images) {
-		this.x = x;
-		this.y = y;
-		this.currentImage = 0;
-		this.delay = delay;
-		this.startTime = 0;
-		this.loop = loop;
-		this.setTarget(null);
-		this.images = images;
-	}
-	
 	public void render(Graphics g) {
 		
 		if(target == null) {

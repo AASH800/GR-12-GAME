@@ -15,11 +15,11 @@ import mightyMoth.supers.Button;
 
 public class Game extends Canvas implements Runnable {
 
-	public static int score;
-
 	public static final int WIDTH = 432;
 	public static final int HEIGHT = 790;
 
+	public static int score;
+	
 	public boolean running;
 
 	public static boolean gameover = true;

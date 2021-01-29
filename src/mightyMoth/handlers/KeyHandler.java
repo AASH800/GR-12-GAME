@@ -21,10 +21,6 @@ public class KeyHandler implements KeyListener{
 				Game.moth.setVelY(-5);
 			}
 		}
-		
-		if(e.getKeyCode() == KeyEvent.VK_E) {
-			LampHandler.spawnLamp();
-		}
 	}
 
 	@Override

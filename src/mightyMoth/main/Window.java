@@ -10,8 +10,8 @@ public class Window extends JFrame{
 		
 		try {
 			game.serverSocket = new ServerSocket(9999);
-		}catch(IOException e) {
-			System.out.println("Something in german I think it means theres a mistake");
+		} catch (IOException e) {
+			System.out.println("You probably already have the game open, please close it before running again");
 			System.exit(0);
 		}
 		

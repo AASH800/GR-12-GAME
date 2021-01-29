@@ -16,7 +16,6 @@ public class GreenCoin extends GameObject{
 	private static Random random = new Random();
 	
 	public static int num;
-	public static int meep;
 	
 	public GreenCoin(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -47,20 +46,18 @@ public class GreenCoin extends GameObject{
 				ObjectHandler.addObject(greenCoin); 
 				Moth.greenGrav = false;
 			}
-		
 		}
 	}
 
 	@Override
 	public void render(Graphics g) {
-		//g.drawRect(x, y, width, height);
 		animation.render(g);
 	}
 	
 	public static void spawnCoin() {
-		meep = random.nextInt();
+		num = random.nextInt();
 		
-		if(meep % 10 == 0) {
+		if(num % 10 == 0) {
 			GreenCoin greenCoin = new GreenCoin(525, LampHandler.heightTop + LampHandler.spacing/2, 25, 35);
 			ObjectHandler.addObject(greenCoin);
 		} 
